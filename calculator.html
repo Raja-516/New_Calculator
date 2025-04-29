@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="cal_style.css">
+        <title>Simple calculator</title>
+    </head>
+    <body>
+        
+        <div class="main">
+            <h1>CALCULATOR</h1>
+            <div class="inner">
+                
+                <input type="text" id="inputBox" placeholder="0" />
+                <div class="btn">
+                    <button class="operator">AC</button>
+                    <button class="operator">DEL</button>
+                    <button class="operator">-</button>
+                    <button class="operator">*</button>
+                </div>
+                <div>
+                    <button id="np">7</button>
+                    <button id="np">8</button>
+                    <button id="np">9</button>
+                    <button class="operator">%</button>
+                </div>
+                <div>
+                    <button id="np">4</button>
+                    <button id="np">5</button>
+                    <button id="np">6</button>
+                    <button class="operator">+</button>
+                </div>
+                <div>
+                    <button id="np">1</button>
+                    <button id="np">2</button>
+                    <button id="np">3</button>
+                    <button class="operator">/</button>
+                </div>
+                <div>
+                    <button id="np">.</button>
+                    <button id="np">00</button>
+                    <button id="np">0</button>
+                    <button class="equalbutton">=</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            let inputt = document.getElementById("inputBox");
+            let arr = document.querySelectorAll('button');
+            let stri = "";
+
+            let ans = Array.from(arr);
+            ans.forEach(btn => {
+                btn.addEventListener("click",(e) => {
+                    if (e.target.innerHTML=="AC"){
+                        inputt.value='';
+                        stri = "";
+
+                    }
+
+                    else if(e.target.innerHTML =="="){
+                        try{
+                        stri=eval(stri);
+                        inputt.value=stri; }
+                        catch{
+                            inputt.value="error";
+                            stri=""
+
+                        }
+                    }
+                    else if (e.target.innerHTML=="DEL"){
+                        stri=stri.slice(0,-1);
+                        inputt.value=stri;
+                    }
+                    else {
+                        stri+=e.target.innerHTML;
+                        inputt.value=stri;
+                    }
+                    console.log(stri);
+                    console.log(e.target.innerHTML);
+                })
+            })
+
+            
+        </script>
+    </body>
+</html>
+
